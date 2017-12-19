@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4FC3F7"
+    tools:context="com.example.student.aplikacjapogodowa.AktywnoscMiejsca">
+
+    <TextView
+        android:id="@+id/napis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Kliknąłeś w listę miejsc"
+        android:layout_marginTop="220dp"
+        android:textColor="#FAFAFA"/>
+
+    <TextView
+        android:id="@+id/niedostepny"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Lista aktualnie jest nie dostępna"
+        android:layout_marginTop="5dp"/>
+
+</LinearLayout>
