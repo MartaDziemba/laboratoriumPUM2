@@ -11,13 +11,13 @@
     tools:context="com.example.student.aplikacjapogodowa.AktywnoscMiejsca">
 
     <TextView
-        android:id="@+id/napis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Kliknąłeś w listę miejsc"
-        android:layout_marginTop="220dp"
-        android:textColor="#FAFAFA"/>
+    android:id="@+id/napis"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="Kliknąłeś w listę miejsc"
+    android:layout_marginTop="220dp"
+    android:textColor="#FAFAFA"/>
 
     <TextView
         android:id="@+id/niedostepny"
