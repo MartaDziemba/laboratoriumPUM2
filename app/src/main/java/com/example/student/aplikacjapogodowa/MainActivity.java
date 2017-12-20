@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +26,19 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.NazwaMiasta)
     TextView miasto;
 
+    @BindView(R.id.lista_miejsc)
+    Button lista;
+    @OnClick(R.id.zmien_miejsce)
+    public void onClick(View view)
+    {
+        String inne_miejsce = wpisz.getText().toString();
+        miasto.setText(inne_miejsce);
+
+    }
+
+    //@OnClick(R.id.lista_miejsc)
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,17 +48,20 @@ public class MainActivity extends AppCompatActivity {
         //final EditText wpisz = findViewById(R.id.podaj);
         //Button zmien = findViewById(R.id.zmien_miejsce);
         //final TextView miasto = findViewById(R.id.NazwaMiasta);
+        //Button lista = findViewById(R.id.lista_miejsc);
 
 
-        Button lista = findViewById(R.id.lista_miejsc);
 
-        zmien.setOnClickListener(new View.OnClickListener() {
+
+        /* zmien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String inne_miejsce = wpisz.getText().toString();
                 miasto.setText(inne_miejsce);
             }
         });
+        */
+
 
         lista.setOnClickListener(new View.OnClickListener() {
             @Override
