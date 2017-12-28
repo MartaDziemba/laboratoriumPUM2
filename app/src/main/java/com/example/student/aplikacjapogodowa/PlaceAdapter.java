@@ -1,6 +1,7 @@
 package com.example.student.aplikacjapogodowa;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -75,6 +76,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
         {
             informacja.setText(info);
         }
+
         private void openAlertDialog()
         {
             AlertDialog.Builder builder;
@@ -83,8 +85,8 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
             } else {
                 builder = new AlertDialog.Builder(itemView.getContext());
             }
-            builder.setTitle(itemView.getContext().getString(R.string.alert_title))
-                    .setMessage(itemView.getContext().getString(R.string.alert_dialog))
+            builder.setTitle("Czy na pewno to chciałeś wybrać?")
+                    .setMessage("Wybierz jeszcze raz.")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             // continue
