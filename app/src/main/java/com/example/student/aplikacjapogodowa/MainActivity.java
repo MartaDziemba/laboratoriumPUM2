@@ -3,11 +3,15 @@ package com.example.student.aplikacjapogodowa;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -52,28 +56,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        /*
-        final EditText wpisz = findViewById(R.id.podaj);
-        Button zmien = findViewById(R.id.zmien_miejsce);
-        final TextView miasto = findViewById(R.id.NazwaMiasta);
-        Button lista = findViewById(R.id.lista_miejsc);
+        ArrayList<Place> places = new ArrayList<>();
+        places.add(new Place("Miasteczko Slaskie", 26));
+        places.add(new Place("Naklo Slaskie",28));
 
-         zmien.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String inne_miejsce = wpisz.getText().toString();
-                miasto.setText(inne_miejsce);
-            }
-        });
-        lista.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AktywnoscMiejsca.class);
-                startActivity(intent);
-                Bundle bundle = new Bundle();bundle.putString("wpisz","miasto");
-                intent.putExtras(bundle);
-            }
-        });
-        */
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        PlaceAdapter placeAdapter = new PlaceAdapter(places);
+        recyclerView.setAdapter(placeAdapter);
+
     }
 }
