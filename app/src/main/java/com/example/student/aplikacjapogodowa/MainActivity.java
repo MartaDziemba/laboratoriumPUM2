@@ -29,14 +29,21 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.lista_miejsc)
     Button lista;
     @OnClick(R.id.zmien_miejsce)
-    public void onClick(View view)
+    public void onClick_zmien(View view)
     {
         String inne_miejsce = wpisz.getText().toString();
         miasto.setText(inne_miejsce);
 
     }
 
-    //@OnClick(R.id.lista_miejsc)
+    @OnClick(R.id.lista_miejsc)
+    public void onClick_lista(View view)
+    {
+        Intent intent = new Intent(MainActivity.this, AktywnoscMiejsca.class);
+        startActivity(intent);
+        Bundle bundle = new Bundle();bundle.putString("wpisz","miasto");
+        intent.putExtras(bundle);
+    }
 
 
     @Override
@@ -45,24 +52,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        //final EditText wpisz = findViewById(R.id.podaj);
-        //Button zmien = findViewById(R.id.zmien_miejsce);
-        //final TextView miasto = findViewById(R.id.NazwaMiasta);
-        //Button lista = findViewById(R.id.lista_miejsc);
+        /*
+        final EditText wpisz = findViewById(R.id.podaj);
+        Button zmien = findViewById(R.id.zmien_miejsce);
+        final TextView miasto = findViewById(R.id.NazwaMiasta);
+        Button lista = findViewById(R.id.lista_miejsc);
 
-
-
-
-        /* zmien.setOnClickListener(new View.OnClickListener() {
+         zmien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String inne_miejsce = wpisz.getText().toString();
                 miasto.setText(inne_miejsce);
             }
         });
-        */
-
-
         lista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,6 +74,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtras(bundle);
             }
         });
-
+        */
     }
 }
