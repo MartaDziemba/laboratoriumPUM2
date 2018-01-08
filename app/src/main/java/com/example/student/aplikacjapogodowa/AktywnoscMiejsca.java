@@ -18,7 +18,6 @@ public class AktywnoscMiejsca extends AppCompatActivity {
 
     @BindView(R.id.niedostepny)
     TextView wynik;
-    String place;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
