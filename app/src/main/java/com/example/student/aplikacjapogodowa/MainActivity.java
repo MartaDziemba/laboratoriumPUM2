@@ -8,7 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -18,8 +21,6 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
 
     @BindView(R.id.podaj)
     EditText wpisz;
@@ -32,8 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.lista_miejsc)
     Button lista;
+
+    @BindView(R.id.obraz)
+    ImageView obrazek;
+
     @OnClick(R.id.zmien_miejsce)
-    public void onClick_zmien(View view)
+    void onClick_zmien(View view)
     {
         String inne_miejsce = wpisz.getText().toString();
         miasto.setText(inne_miejsce);
@@ -41,14 +46,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.lista_miejsc)
-    public void onClick_lista(View view)
+    void onClick_lista(View view)
     {
         Intent intent = new Intent(MainActivity.this, AktywnoscMiejsca.class);
-        startActivity(intent);
-        Bundle bundle = new Bundle();bundle.putString("wpisz","miasto");
+        Bundle bundle = new Bundle();
+        String tekst = wpisz.getText().toString();
+        bundle.putString("KEY",tekst);
         intent.putExtras(bundle);
+        startActivity(intent);
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +62,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        ArrayList<Place> places = new ArrayList<>();
-        places.add(new Place("Miasteczko Slaskie", 26));
-        places.add(new Place("Naklo Slaskie",28));
+        Intent getData = getIntent();
+        Bundle bundle = getIntent().getExtras();
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-
-        PlaceAdapter placeAdapter = new PlaceAdapter(places);
-        recyclerView.setAdapter(placeAdapter);
-
+        if (bundle != null){
+            String place = bundle.getString("Nazwa");
+            miasto.setText(place);
+        }
     }
+
+
+
 }

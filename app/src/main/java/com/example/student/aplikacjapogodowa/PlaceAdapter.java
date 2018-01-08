@@ -24,10 +24,9 @@ import butterknife.OnClick;
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> {
 
     private ArrayList<Place> places = new ArrayList<>();
-
     PlaceAdapter(ArrayList<Place> places)
     {
-        this.places=places;
+        this.places = places;
     }
 
     @Override
@@ -39,8 +38,8 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.setNazwaMiasta(places.get(position).getPlaceName());
-        holder.setInformacja(places.get(position).getInformation() + "");
+        holder.setPlaceName(places.get(position).getPlaceName());
+        holder.setInfo(places.get(position).getInformation() + "");
 
     }
 
@@ -49,56 +48,28 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
         return places.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.NazwaMiasta)
-        TextView nazwaMiasta;
+        @BindView(R.id.nazwaMiejsca)
+        TextView nazwa_Miejsca;
 
         @BindView(R.id.Informacja)
         TextView informacja;
-
-        @OnClick(R.id.WybierzMiejsce)
-        void wybierzMiejsce()
-        {
-            openAlertDialog();
-        }
 
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        private  void setNazwaMiasta(String nazwa)
+        private  void setPlaceName(String nazwa)
         {
-            nazwaMiasta.setText(nazwa);
+            nazwa_Miejsca.setText(nazwa);
         }
-        private void setInformacja(String info)
+        public void setInfo(String information)
         {
-            informacja.setText(info);
+            informacja.setText(information);
         }
 
-        private void openAlertDialog()
-        {
-            AlertDialog.Builder builder;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                builder = new AlertDialog.Builder(itemView.getContext(), android.R.style.Theme_Material_Dialog_Alert);
-            } else {
-                builder = new AlertDialog.Builder(itemView.getContext());
-            }
-            builder.setTitle("Czy na pewno to chciałeś wybrać?")
-                    .setMessage("Wybierz jeszcze raz.")
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // continue
-                        }
-                    })
-                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //n
-                        }
-                    })
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
-        }
     }
 }
